@@ -1,7 +1,9 @@
 import express from "express"
 import { createServer } from "http"
-import socketio from "socket.io"
+import { Server } from "socket.io"
 import cors from "cors"
+
+import { initEvents } from "./events.js"
 
 const app = express()
 
@@ -10,11 +12,12 @@ app.use(cors({
 }))
 
 const server = createServer(app)
-const ioServer = socketio(server, {
+const ioServer = new Server(server, {
   cors:{
-    origin:["*"]
+    origin:"*"
   }
 })
 
+initEvents(ioServer)
 
-export { ioServer }
+export { server }
