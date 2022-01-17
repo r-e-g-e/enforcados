@@ -18,7 +18,7 @@ export function Game() {
   if (whoWon) {
     return (
       <Container>
-        <Confetti />
+        <Confetti width="100%"/>
         <h1>{whoWon} ganhou!!!</h1>
         <button onClick={handleReset}>reset</button>
       </Container>
@@ -33,7 +33,7 @@ export function Game() {
             <Gibbet lifes={game.lifes}/>
             <SecretWord />
           </div>
-          {isHost || <LetterInput />}
+          <LetterInput />
         </> :
         <WaitStartGame />}
     </Container>
