@@ -14,7 +14,8 @@ function GameProvider(props) {
 
   useEffect(() => {
     if (!socket) {
-      const socket = io('http://localhost:3000')
+      const socket = io(process.env.REACT_APP_BACKEND_SOCKET_URL)
+      console.log("PORTA BACKEND", process.env.REACT_APP_BACKEND_SOCKET_URL)
       setSocket(socket)
     }
   }, [socket])
