@@ -215,12 +215,9 @@ class IoEvents{
         this.randomizeHost()
       }
       if(this.#lifes <= 0){
-        this.sendMatchData()
         this.resetGame()
         playerWon.bind(this)(false)
         this.randomizeHost()
-        
-        return;
       }
 
       this.sendMatchData()
