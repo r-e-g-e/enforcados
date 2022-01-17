@@ -155,7 +155,7 @@ class IoEvents{
 
       for(let word of wordArray){
         word = Number(word)
-        if(typeof word === "number" && !isNaN(word)) return;
+        if( word != " " && typeof word === "number" && !isNaN(word)) return;
       }
 
       this.#secretWord = word
@@ -215,9 +215,12 @@ class IoEvents{
         this.randomizeHost()
       }
       if(this.#lifes <= 0){
+        this.sendMatchData()
         this.resetGame()
         playerWon.bind(this)(false)
         this.randomizeHost()
+        
+        return;
       }
 
       this.sendMatchData()
