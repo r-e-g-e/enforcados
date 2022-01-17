@@ -84,6 +84,15 @@ export const Container = styled.div`
           right: -28px;
         }
       }
-    }     
+    }   
+
+    @media screen and (max-width: 900px){
+      transform: scale(.6);
+    }
+    
   }
+  @media screen and (max-width: 900px){
+      width: 135px;
+      height: 160px;
+    }
 `

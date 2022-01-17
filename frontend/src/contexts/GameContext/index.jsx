@@ -35,7 +35,6 @@ function GameProvider(props) {
         })
 
         socket.on('whowon', (whoWon) => {
-          setTimeout()
           setWhoWon(whoWon)
         })
       })
