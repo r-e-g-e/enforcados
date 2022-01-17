@@ -10,7 +10,10 @@ export function WaitStartGame() {
     <Container>
       {isHost ?
         <HostModal /> :
-        <div>Aguardando o arrombado do host dar play</div>
+        <section className="playerModal">
+          <h2>Aguardando a palavra secreta</h2>
+          <div className="playerModal__waitIcon"></div>
+        </section>
       }
     </Container>
   )
