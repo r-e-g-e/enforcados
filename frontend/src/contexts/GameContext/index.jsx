@@ -14,7 +14,7 @@ function GameProvider(props) {
 
   useEffect(() => {
     if (!socket) {
-      const socket = io('http://25.10.105.1:3000')
+      const socket = io('http://localhost:3000')
       setSocket(socket)
     }
   }, [socket])
@@ -29,14 +29,13 @@ function GameProvider(props) {
         })
 
         socket.on('matchdata', (game) => {
-          console.log(game.players)
           setGame(game)
           setIsGameRunning(game.isGameRunning)
-          console.log(game.currentPlayer , socket.id)
           setIsMyTurn(game.currentPlayer === socket.id ? true : false)
         })
 
         socket.on('whowon', (whoWon) => {
+          setTimeout()
           setWhoWon(whoWon)
         })
       })
