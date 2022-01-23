@@ -51,8 +51,6 @@ class IoEvents{
     this.#wordStatus = undefined
     this.#usedLetters = new Array()
     this.#lifes = 6
-
-    console.log("RESETOU")
   }
 
   setNextCurrentPlayer(){
@@ -81,8 +79,6 @@ class IoEvents{
       usedLetters: this.#usedLetters
     }
 
-    console.log(this.#currentPlayerId)
-
     this.#io.emit("matchdata", matchData)
   }
 
@@ -92,8 +88,6 @@ class IoEvents{
     if(randomIndex === this.#players.indexOf(this.#hostId)){
       randomIndex++
     }
-
-    console.log({randomIndex})
 
     this.defineHost(this.#players[randomIndex])
   }
@@ -167,15 +161,12 @@ class IoEvents{
       this.setNextCurrentPlayer()
 
       this.sendMatchData()
-      console.log("COMECOU")
     })
   }
 
   socketAttemptLetter = (socket) => {
     function playerWon(player = true){
       this.#io.emit("whowon", player ? "player" : "host")
-
-      console.log( player ? "player" : "host", " ganhou!")
     }
 
     socket.on("attemptletter", word => {
