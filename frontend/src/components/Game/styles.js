@@ -7,7 +7,19 @@ export const Container = styled.div`
   align-items: center;
   gap: 80px;
   width: 95%;
+  max-width: 1200px;
   margin: auto;
+
+  .game__playersCounter{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-end;
+    margin-right: 50px;
+    color: white;
+    font-weight: 500;
+    letter-spacing: .08em;
+  }
 
   .game__word-Container{
     display: flex;
