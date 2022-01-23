@@ -11,11 +11,13 @@ function GameProvider(props) {
   const [game, setGame] = useState()
   const [isGameRunning, setIsGameRunning] = useState(false)
   const [whoWon, setWhoWon] = useState()
+  const [disconnected, setDisconnected] = useState(true)
+
+  let interval
 
   useEffect(() => {
     if (!socket) {
-      const socket = io(process.env.REACT_APP_BACKEND_SOCKET_URL)
-      console.log("PORTA BACKEND", process.env.REACT_APP_BACKEND_SOCKET_URL)
+      const socket = io('http://localhost:3000')
       setSocket(socket)
     }
   }, [socket])
@@ -23,6 +25,7 @@ function GameProvider(props) {
   useEffect(() => {
     if (socket) {
       socket.on('connect', () => {
+        setDisconnected(false)
 
         socket.on('newhost', (playerId) => {
           setHost(playerId)
@@ -39,8 +42,24 @@ function GameProvider(props) {
           setWhoWon(whoWon)
         })
       })
+
+      socket.on('disconnect', () => {
+        setDisconnected(true)
+      })
     }
   }, [socket])
+
+  useEffect(() => {
+    if(socket && disconnected && !interval){
+      interval = setInterval(() => {
+        socket.connect()
+      }, 5000)
+    }
+
+    if(!disconnected){
+        clearInterval(interval)
+    }
+  }, [socket, disconnected])
 
 
   const values = {

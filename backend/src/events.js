@@ -1,5 +1,3 @@
-// Apos ter ganjo o primeiro jgoo, quando o player envia uma letra  o #currentPlayer no sendGameData esta undefined
-
 class IoEvents {
   #io
   #lifes
@@ -96,9 +94,8 @@ class IoEvents {
     this.#io.on("connection", socket => {
       const clientId = socket.id
 
-      if (this.#connectedSockets.length > 5) {
+      if (this.#connectedSockets.length > 2) {
         socket.disconnect()
-        console.log("Fucker disconnected!")
         return;
       }
 
