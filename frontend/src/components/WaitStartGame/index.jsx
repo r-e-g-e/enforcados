@@ -4,14 +4,14 @@ import { HostModal } from "../HostModal";
 import { Container } from "./styles"
 
 export function WaitStartGame() {
-  const {isHost} = useContext(GameContext)
+  const { isHost, socket } = useContext(GameContext)
 
   return (
     <Container>
       {isHost ?
-        <HostModal /> :
+        <HostModal /> : 
         <section className="playerModal">
-          <h2>Aguardando a palavra secreta</h2>
+          <h2>{ socket && socket.disconnected ? "Sala cheia!" : "Aguardando a palavra secreta" } </h2>
           <div className="playerModal__waitIcon"></div>
         </section>
       }
