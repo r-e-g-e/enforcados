@@ -30,9 +30,12 @@ export function WinsModal() {
   return (
     <Container>
       <Conffeti width={windowWidth} />
+
       <PlayersCounter />
-      <h1>{whoWon} ganhou!!!</h1>
-      <button onClick={handleReset}>reset</button>
+      <section className="modalWin">
+        <h1>Os {whoWon}s Ganharam!!!</h1>
+        <button onClick={handleReset}>Jogar Novamente</button>
+      </section>
     </Container>
   )
 }
